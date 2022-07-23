@@ -1,6 +1,8 @@
+import { Router } from "Router";
+
 const App = () => (
   <>
-    <div>Hello World</div>
+    <Router />
   </>
 );
 
