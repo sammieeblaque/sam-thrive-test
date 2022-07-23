@@ -23,7 +23,7 @@ const Home = (): JSX.Element => {
 
   const handleSearch = (e: any) => {
     e.preventDefault();
-    if (search || e.key === "Enter") {
+    if (search) {
       fetchUser();
     } else {
       console.log("Your search is empty");
@@ -31,7 +31,7 @@ const Home = (): JSX.Element => {
   };
   return (
     <>
-      <section className="p-4 text-center">
+      <section className="p-4 flex flex-col">
         <div className="flex justify-center items-center">
           <input
             type="text"
@@ -53,7 +53,7 @@ const Home = (): JSX.Element => {
             search
           </button>
         </div>
-        <section className="mt-20 ">
+        <section className="mt-20 flex justify-center items-center gap-6">
           {users.map((user) => {
             return <UserInfo user={user} key={user.id} />;
           })}
