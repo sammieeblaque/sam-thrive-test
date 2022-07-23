@@ -1,5 +1,5 @@
 import Home from "components/Home";
-import SingleUser from "components/User/SingleUser";
+import SingleUser from "components/SingleUser";
 import { Route, Routes } from "react-router-dom";
 
 export const Router = () => (
