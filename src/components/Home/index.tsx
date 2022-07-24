@@ -18,7 +18,7 @@ const Home = (): JSX.Element => {
       setUser(data?.items);
       setloading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -27,7 +27,7 @@ const Home = (): JSX.Element => {
     if (search) {
       fetchUser();
     } else {
-      console.log("Your search is empty");
+      console.error("Your search is empty");
     }
   };
   return (
