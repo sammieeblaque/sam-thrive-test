@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 
 const SingleUser = (): JSX.Element => {
   const [userInfo, setuserInfo] = useState<any>([]);
+  const [userOrg, setUserOrg] = useState<any[]>([]);
   const { login } = useParams();
   const { GET_USER } = config;
 
@@ -11,13 +12,25 @@ const SingleUser = (): JSX.Element => {
     try {
       const res = await fetch(`${GET_USER}${login}`);
       const data = await res.json();
+      console.log(data);
       setuserInfo(data);
+    } catch (error) {
+      console.log("There was an error");
+    }
+  };
+  const fetchGitUserOrgs = async () => {
+    try {
+      const res = await fetch(`${GET_USER}${login}/orgs`);
+      const data = await res.json();
+      console.log(res);
+      setUserOrg(data);
     } catch (error) {
       console.log("There was an error");
     }
   };
   useEffect(() => {
     fetchGituser();
+    fetchGitUserOrgs();
   }, []);
 
   const {
@@ -49,13 +62,13 @@ const SingleUser = (): JSX.Element => {
           </section>
           <section>
             <section className="font-semibold">
-              <h3>Name: {name}</h3>
-              <p>{twitter_username}</p>
-              <p>followers: {followers} </p>
+              <h3>Name: {name ?? "N/A"}</h3>
+              <p>Twitter: {twitter_username ?? "N/A"}</p>
+              <p>followers: {followers ?? "N/A"} </p>
               <p>
-                <a href={blog}>{blog}</a>
+                <a href={blog}>{blog ?? "N/A"}</a>
               </p>
-              <p>repos:{public_repos}</p>
+              <p>repos:{public_repos ?? "N/A"}</p>
             </section>
           </section>
         </section>

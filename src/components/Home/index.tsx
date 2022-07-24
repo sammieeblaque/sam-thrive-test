@@ -53,7 +53,7 @@ const Home = (): JSX.Element => {
             search
           </button>
         </div>
-        <section className="mt-20 flex justify-center items-center gap-6">
+        <section className="mt-20 flex flex-wrap justify-center items-center gap-6">
           {users.map((user) => {
             return <UserInfo user={user} key={user.id} />;
           })}
