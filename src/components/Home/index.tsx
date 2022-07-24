@@ -2,7 +2,7 @@ import { UserType } from "@types";
 import Spinner from "components/Spinner";
 import UserInfo from "components/User";
 import { config } from "config";
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 
 const Home = (): JSX.Element => {
   const [users, setUser] = useState<UserType[]>([]);
@@ -22,7 +22,7 @@ const Home = (): JSX.Element => {
     }
   };
 
-  const handleSearch = (e: any) => {
+  const handleSearch = (e: SyntheticEvent<EventTarget>) => {
     e.preventDefault();
     if (search) {
       fetchUser();
