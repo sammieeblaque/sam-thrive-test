@@ -1,10 +1,11 @@
+import { UserType } from "@types";
 import Spinner from "components/Spinner";
 import UserInfo from "components/User";
 import { config } from "config";
 import { useState } from "react";
 
 const Home = (): JSX.Element => {
-  const [users, setUser] = useState<any[]>([]);
+  const [users, setUser] = useState<UserType[]>([]);
   const [search, setSearch] = useState<string>("");
   const [loading, setloading] = useState<boolean>(false);
   const { SEARCH_USERS } = config;

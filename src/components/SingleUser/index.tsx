@@ -1,10 +1,11 @@
+import { OrganisationsType, ReposType } from "@types";
 import { config } from "config";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const SingleUser = (): JSX.Element => {
-  const [userInfo, setuserInfo] = useState<any[]>([]);
-  const [userOrg, setUserOrg] = useState<any[]>([]);
+  const [userInfo, setuserInfo] = useState<ReposType[]>([]);
+  const [userOrg, setUserOrg] = useState<OrganisationsType[]>([]);
   const { login } = useParams();
   const { GET_USER } = config;
 
@@ -12,20 +13,18 @@ const SingleUser = (): JSX.Element => {
     try {
       const res = await fetch(`${GET_USER}${login}/repos`);
       const data = await res.json();
-      console.log(data);
       setuserInfo(data);
     } catch (error) {
-      console.log("There was an error");
+      console.error(error);
     }
   };
   const fetchGitUserOrgs = async () => {
     try {
       const res = await fetch(`${GET_USER}${login}/orgs`);
       const data = await res.json();
-      console.log(res);
       setUserOrg(data);
     } catch (error) {
-      console.log("There was an error");
+      console.error(error);
     }
   };
   useEffect(() => {
@@ -33,15 +32,6 @@ const SingleUser = (): JSX.Element => {
     fetchGitUserOrgs();
   }, []);
 
-  // const {
-  //   name,
-  //   avatar_url,
-  //   twitter_username,
-  //   followers,
-  //   public_repos,
-  //   // company,
-  //   blog,
-  // } = userInfo;
   return (
     <>
       <section className="p-5">
@@ -56,7 +46,7 @@ const SingleUser = (): JSX.Element => {
           <section className="w-2/5">
             <h3 className="font-bold">Organisations</h3>
             {userOrg.length > 0
-              ? userOrg.map((user) => (
+              ? userOrg.slice(0, 5).map((user) => (
                   <section key={user.id} className="font-semibold p-2">
                     <p>Name: {user.login ?? "No User Login"}</p>
                     <p>
