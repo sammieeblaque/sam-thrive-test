@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { OrganisationsType, ReposType } from "@types";
 import { config } from "config";
 import { useEffect, useState } from "react";
