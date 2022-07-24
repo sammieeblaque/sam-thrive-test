@@ -11,6 +11,7 @@ const SingleUser = (): JSX.Element => {
 
   const fetchGituserRepos = async () => {
     try {
+      // login refers the the user github name.
       const res = await fetch(`${GET_USER}${login}/repos`);
       const data = await res.json();
       setuserInfo(data);
@@ -20,6 +21,7 @@ const SingleUser = (): JSX.Element => {
   };
   const fetchGitUserOrgs = async () => {
     try {
+      // login refers the the user github name.
       const res = await fetch(`${GET_USER}${login}/orgs`);
       const data = await res.json();
       setUserOrg(data);
