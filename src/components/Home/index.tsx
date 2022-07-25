@@ -59,7 +59,7 @@ const Home = (): JSX.Element => {
             return <UserInfo user={user} key={user.id} />;
           })}
         </section>
-        <section className="mt-16">{loading ? <Spinner /> : ""}</section>
+        <section className="mt-16">{loading ? <Spinner /> : null}</section>
       </section>
     </>
   );
